@@ -1,0 +1,52 @@
+# Nextflow
+.nextflow/
+.nextflow.log*
+work/
+
+# R and Python
+.Rhistory
+.RData
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+
+# Old/duplicate outputs
+02_Data_Preparation/
+04_Differential_Expression/
+05_DEG_Results/
+06_Pathway_Analysis/
+07_Visualizations/
+08_Final_Tables/
+BRD4_Effect/
+BRD4_IFNg_Interaction/
+Clustering/
+Correlation/
+DEG_Results/
+Expression_Distribution/
+IFNg_Effect/
+IFNg_Response_KO/
+PCA/
+Pathway_Analysis/
+Volcano/
+DE_summary.txt
+QC_summary.txt
+expression_CPM.csv
+gene_annotation.csv
+sample_metadata.csv
+step1_summary.txt
+
+# Old backups and execution reports
+main.nf.working_backup
+nextflow
+report.html
+timeline.html
+trace-*.txt
+reports/
