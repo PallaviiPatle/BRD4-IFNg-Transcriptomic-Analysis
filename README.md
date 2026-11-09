@@ -66,31 +66,37 @@ The analysis was implemented as a seven-stage Nextflow workflow.
 
 The workflow is orchestrated through Nextflow DSL2, with individual Python and R scripts performing the computational analysis.
 
-```text
-Processed RNA-seq Expression Matrix
-                 |
-                 v
-         Data Preparation
-                 |
-                 v
-          Sample QC
-                 |
-                 v
-    Differential Expression
-                 |
-        +--------+--------+
-        |                 |
-        v                 v
-   DEG Processing   Pathway Analysis
-        |                 |
-        +--------+--------+
-                 |
-                 v
-          Heatmap Analysis
-                 |
-                 v
-          Final Tables
+
+## Workflow
+
+The analysis was implemented using a modular Nextflow DSL2 workflow.
+
+```mermaid
+flowchart TD
+    A["GEO Dataset: GSE248821<br/>Processed RSEM-CPM Expression Data"]
+    A --> B["STEP 1: Data Preparation"]
+    B --> C["STEP 2: Sample QC<br/>PCA, Correlation, Clustering,<br/>Expression Distribution"]
+    C --> D["STEP 3: Differential Expression Analysis"]
+
+    D --> E1["BRD4 Effect"]
+    D --> E2["IFN-gamma Effect"]
+    D --> E3["IFN-gamma Response in BRD4-KO"]
+    D --> E4["BRD4 x IFN-gamma Interaction"]
+
+    E1 --> F["STEP 4: DEG Processing"]
+    E2 --> F
+    E3 --> F
+    E4 --> F
+
+    F --> G["STEP 5: Pathway Analysis<br/>GO BP, KEGG, Reactome, GSEA"]
+    F --> H["STEP 6: Heatmap Analysis"]
+
+    G --> I["STEP 7: Final Tables"]
+    H --> I
+
+    I --> J["Consolidated Results"]
 ```
+
 
 ## 5. Data Preparation and Quality Control
 
